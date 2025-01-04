@@ -2,8 +2,7 @@
 
 #include <iostream>
 #include <string>
-
-#define MAX_ITEM 3
+#include <vector>
 
 using namespace std;
 
@@ -27,10 +26,10 @@ class LibraryItem{
         }
         virtual void displayDetails()
         {
-            std::cout << "Title: " << title << std::endl;
-            std::cout << "Author: " << author << std::endl;
-            std::cout << "ItemId: " << itemId << std::endl;
-            std::cout << "Available status: " << isAvailable() << std::endl;
+            cout << "Title: " << title << endl;
+            cout << "Author: " << author << endl;
+            cout << "ItemId: " << itemId << endl;
+            cout << "Available status: " << isAvailable() << endl;
         }
 };
 class Book : public LibraryItem{
@@ -41,7 +40,7 @@ class Book : public LibraryItem{
         void displayDetails() override
         {
             LibraryItem::displayDetails();
-            std::cout << "Pages: " << pages << std::endl;
+           cout << "Pages: " << pages << endl;
         }
 };
 class DVD : public LibraryItem{
@@ -52,37 +51,38 @@ class DVD : public LibraryItem{
         void displayDetails() override
         {
             LibraryItem::displayDetails();
-            std::cout << "Duration: " << duration << std::endl;
+            cout << "Duration: " << duration << endl;
             if(author == "QPR"){
-                 std::cout << "This author has new DVD's, please checkout in section 1:21"<< std::endl;
+                cout << "This author has new DVD's, please checkout in section 1:21"<< endl;
             }
         }
 };
 
 int main()
 {
-    LibraryItem* items[MAX_ITEM];
-    items[0] = new Book("ABC", "XYZ", 1, 92);
-    items[1] = new DVD("EFG", "QPR", 1, 45);
-    items[2] = new DVD("YRT", "KJH", 2, 68);
+    vector<LibraryItem*> items; // resizable array
+    items.push_back(new Book("ABC", "XYZ", 1, 92));
+    items.push_back(new DVD("EFG", "QPR", 1, 45));
+    items.push_back(new DVD("YRT", "KJH", 2, 68));
+    items.push_back(new Book("KLM", "FRH", 2, 102));
     
-    for(int i=0; i<MAX_ITEM; i++)
+    for(int i=0; i<items.size(); i++)
     {
         items[i]->displayDetails();
-        std::cout << "----------------------------" << std::endl;
+        cout << "----------------------------" << endl;
         
     }
     items[1]->borrowItem();
-    std::cout << "After borrowed: " << std::endl;
-    std::cout << "----------------------------" << std::endl;
+    cout << "After borrowed: " << endl;
+    cout << "----------------------------" << endl;
     
-    for(int i=0; i<MAX_ITEM; i++)
+    for(int i=0; i<items.size(); i++)
     {
         items[i]->displayDetails();
-        std::cout << "----------------------------" << std::endl;
+        cout << "----------------------------" << endl;
     }
     
-    for (int i = 0; i < MAX_ITEM; i++) {
+    for (int i = 0; i < items.size(); i++) {
         delete items[i];
     }
     
