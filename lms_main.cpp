@@ -31,6 +31,10 @@ class LibraryItem{
             cout << "ItemId: " << itemId << endl;
             cout << "Available status: " << isAvailable() << endl;
         }
+        virtual ~LibraryItem()
+        {
+            cout << "LibraryItem Destructor"<< endl;
+        }
 };
 class Book : public LibraryItem{
     private:
@@ -41,6 +45,10 @@ class Book : public LibraryItem{
         {
             LibraryItem::displayDetails();
            cout << "Pages: " << pages << endl;
+        }
+        ~Book()
+        {
+            cout << "Book Destructor"<< endl;
         }
 };
 class DVD : public LibraryItem{
@@ -56,11 +64,15 @@ class DVD : public LibraryItem{
                 cout << "This author has new DVD's, please checkout in section 1:21"<< endl;
             }
         }
+        ~DVD()
+        {
+            cout << "DVD Destructor"<< endl;
+        }
 };
 
 int main()
 {
-    vector<LibraryItem*> items; // resizable array
+    vector<LibraryItem*> items; //resizeable array
     items.push_back(new Book("ABC", "XYZ", 1, 92));
     items.push_back(new DVD("EFG", "QPR", 1, 45));
     items.push_back(new DVD("YRT", "KJH", 2, 68));
@@ -86,5 +98,5 @@ int main()
         delete items[i];
     }
     
-    return 0; 
+    return 0;
 }
