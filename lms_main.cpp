@@ -79,9 +79,9 @@ int main()
     items.push_back(make_unique<DVD>("YRT", "KJH", 2, 68));
     items.push_back(make_unique<Book>("KLM", "FRH", 2, 102));
     
-    for(int i=0; i<items.size(); i++)
+    for(auto& item: items)
     {
-        items[i]->displayDetails();
+        item->displayDetails();
         cout << "----------------------------" << endl;
         
     }
@@ -89,9 +89,9 @@ int main()
     cout << "After borrowed: " << endl;
     cout << "----------------------------" << endl;
     
-    for(int i=0; i<items.size(); i++)
+    for(auto& item: items)
     {
-        items[i]->displayDetails();
+        item->displayDetails();
         cout << "----------------------------" << endl;
     }
     return 0;
