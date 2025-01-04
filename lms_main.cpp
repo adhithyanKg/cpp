@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <memory>
 
 using namespace std;
 
@@ -72,11 +73,11 @@ class DVD : public LibraryItem{
 
 int main()
 {
-    vector<LibraryItem*> items; //resizeable array
-    items.push_back(new Book("ABC", "XYZ", 1, 92));
-    items.push_back(new DVD("EFG", "QPR", 1, 45));
-    items.push_back(new DVD("YRT", "KJH", 2, 68));
-    items.push_back(new Book("KLM", "FRH", 2, 102));
+    vector<unique_ptr<LibraryItem>> items;
+    items.push_back(make_unique<Book>("ABC", "XYZ", 1, 92));
+    items.push_back(make_unique<DVD>("EFG", "QPR", 1, 45));
+    items.push_back(make_unique<DVD>("YRT", "KJH", 2, 68));
+    items.push_back(make_unique<Book>("KLM", "FRH", 2, 102));
     
     for(int i=0; i<items.size(); i++)
     {
@@ -93,10 +94,5 @@ int main()
         items[i]->displayDetails();
         cout << "----------------------------" << endl;
     }
-    
-    for (int i = 0; i < items.size(); i++) {
-        delete items[i];
-    }
-    
     return 0;
 }
