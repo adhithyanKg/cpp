@@ -1,10 +1,11 @@
-/* This file contains C++ conatiners including vector, list, map, multimap and unordered_map */
+/* This file contains C++ conatiners including vector, list, map, multimap, unordered_map, set and multiset */
 #include <iostream>
 #include <algorithm>
 #include <vector>
 #include <list>
 #include <map>
 #include <unordered_map>
+#include <set>
 
 using namespace std;
 
@@ -53,6 +54,11 @@ int main()
     mmp.insert(make_pair(4,800));
     mmp.insert(make_pair(7,1200));
     mmp.insert(make_pair(4,900));
+
+    set<int> S1; //unique values are allowed
+    multiset<int> MS1; //duplicate values are allowed;
+    S1.insert(1), S1.insert(90), S1.insert(13), S1.insert(71), S1.insert(17), S1.insert(17);
+    MS1.insert(1), MS1.insert(90), MS1.insert(13), MS1.insert(71), MS1.insert(17), MS1.insert(17);
     
     printVal(numbers);
     
@@ -75,6 +81,10 @@ int main()
     printMap(ump);
     
     printMap(mmp);
+
+    printVal(S1);
+
+    printVal(MS1);
     
     return 0;
 }
