@@ -1,4 +1,4 @@
-/* This file contains C++ conatiners including vector, list, map, multimap, unordered_map, set and multiset */
+/* This file contains C++ conatiners including vector, list, map, multimap, unordered_map, set, multiset, queue, priority queue and stack */
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -6,6 +6,8 @@
 #include <map>
 #include <unordered_map>
 #include <set>
+#include <queue>
+#include <stack>
 
 using namespace std;
 
@@ -21,7 +23,6 @@ void printMap(const U & mp)
     for(const auto& key: mp)
         cout << key.first << "--" << key.second << endl;
 }
-
 int main()
 {
     int numbers[] = {78, 65, 42, 2, 10};
@@ -60,6 +61,21 @@ int main()
     S1.insert(1), S1.insert(90), S1.insert(13), S1.insert(71), S1.insert(17), S1.insert(17);
     MS1.insert(1), MS1.insert(90), MS1.insert(13), MS1.insert(71), MS1.insert(17), MS1.insert(17);
     
+    queue<int> q1;
+    q1.push(40);
+    q1.push(50);
+    q1.push(4);
+    
+    priority_queue<int> pq1;
+    pq1.push(40);
+    pq1.push(50);
+    pq1.push(4);
+    
+    stack<int> stk1;
+    stk1.push(400);
+    stk1.push(500);
+    stk1.push(40);
+    
     printVal(numbers);
     
     sort(begin(numbers), end(numbers), greater<int>{});
@@ -85,6 +101,27 @@ int main()
     printVal(S1);
 
     printVal(MS1);
+    
+    cout << "Values stored in the queue" << endl;
+    while(!q1.empty())
+    {
+        cout << q1.front() << endl;
+        q1.pop();
+    }
+    
+    cout << "Values stored in the priority queue" << endl;
+    while(!pq1.empty())
+    {
+        cout << pq1.top() << endl;
+        pq1.pop();
+    }
+    
+    cout << "Values stored in the stack" << endl;
+    while(!stk1.empty())
+    {
+        cout << stk1.top() << endl;
+        stk1.pop();
+    }
     
     return 0;
 }
